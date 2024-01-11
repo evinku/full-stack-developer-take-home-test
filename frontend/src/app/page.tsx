@@ -3,12 +3,7 @@ import React, { useState, useEffect } from 'react';
 import ItemComponent from './components/Item';
 import Modal from './components/Modal';
 import { apiService } from './services/apiService';
-
-interface Item {
-  title: string;
-  description: string;
-  imageUrl: string;
-}
+import { Item } from './interfaces';
 
 const Home: React.FC = () => {
   const [items, setItems] = useState<Item[]>([]);
@@ -40,7 +35,7 @@ const Home: React.FC = () => {
     <div>
       <div className="sticky top-0 bg-white p-4 shadow-md">
         <button onClick={() => setShowModal(true)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          Describe Image
+          Mint New NFT
         </button>
       </div>
       <div className="flex flex-wrap gap-2">
@@ -48,7 +43,7 @@ const Home: React.FC = () => {
           <ItemComponent key={index} {...item} />
         ))}
       </div>
-      {showModal && <Modal onClose={() => setShowModal(false)} onSubmit={handleAddItem} lastImageId={extractIdFromUrl(items?.slice(-1)[0]?.imageUrl)} />}
+      {showModal && <Modal onClose={() => setShowModal(false)} onSubmit={handleAddItem} mintedItems={items.map(i => i.tokenId)} />}
     </div>
   );
 };

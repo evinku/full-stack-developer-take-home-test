@@ -1,4 +1,5 @@
 import axios, { AxiosResponse, AxiosError } from 'axios';
+import { Item } from '../interfaces';
 
 const API_BASE_URL = 'http://localhost:5000';
 
@@ -19,9 +20,3 @@ export const apiService = {
 
   deleteItem: (id: string): ApiError => axiosInstance.delete(`/items/${id}`),
 };
-
-interface Item {
-  title: string;
-  description: string;
-  imageUrl: string;
-}
