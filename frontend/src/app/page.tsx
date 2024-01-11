@@ -25,10 +25,10 @@ const Home: React.FC = () => {
     setItems(res.data)
   };
 
-  const extractIdFromUrl = (url: string): number => {
-    const idPattern = /\/id\/(\d+)\//;
-    const match = url?.match(idPattern);
-    return match ? parseInt(match[1]) : 1;
+  const handleDeleteItem = async (tokenId: string) => {
+    await apiService.deleteItem(tokenId)
+    const res = await apiService.getItems()
+    setItems(res.data)
   };
 
   return (
@@ -39,8 +39,8 @@ const Home: React.FC = () => {
         </button>
       </div>
       <div className="flex flex-wrap gap-2">
-        {items?.map((item, index) => (
-          <ItemComponent key={index} {...item} />
+        {items?.map((item) => (
+          <ItemComponent onDelete={handleDeleteItem} key={item.tokenId} {...item} />
         ))}
       </div>
       {showModal && <Modal onClose={() => setShowModal(false)} onSubmit={handleAddItem} mintedItems={items.map(i => i.tokenId)} />}

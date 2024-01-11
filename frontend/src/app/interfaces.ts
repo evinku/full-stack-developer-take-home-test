@@ -4,6 +4,5 @@ export interface Item {
     imageUrl: string;
     tokenId: string
     owner: string
-    _id?: string
   }
   

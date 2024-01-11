@@ -37,10 +37,10 @@ router.put('/:id', async (req: Request, res: Response) => {
 });
 
 // Delete an item by ID
-router.delete('/:id', async (req: Request, res: Response) => {
+router.delete('/:tokenId', async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
-    await Item.findByIdAndDelete(id);
+    const { tokenId } = req.params;
+    await Item.deleteOne({ tokenId });
     res.json({ message: 'Item deleted' });
   } catch (err:any) {
     res.status(400).json({ message: err.message });

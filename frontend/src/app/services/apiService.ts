@@ -18,5 +18,5 @@ export const apiService = {
 
   updateItem: (id: string, updatedItem: Item): ApiResponse<Item> => axiosInstance.put(`/items/${id}`, updatedItem),
 
-  deleteItem: (id: string): ApiError => axiosInstance.delete(`/items/${id}`),
+  deleteItem: (tokenId: string): ApiError => axiosInstance.delete(`/items/${tokenId}`),
 };
