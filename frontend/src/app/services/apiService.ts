@@ -1,10 +1,8 @@
 import axios, { AxiosResponse, AxiosError } from 'axios';
 import { Item } from '../interfaces';
 
-const API_BASE_URL = 'http://localhost:5000';
-
 const axiosInstance = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
   timeout: 5000,
 });
 
