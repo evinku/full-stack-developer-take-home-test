@@ -1,23 +1,27 @@
 version: '3.9'
-
+networks: 
+  test-task-network:
+    external: false
 services:
   app:
-    container_name: app
     restart: always
+    networks:
+      - test-task-network
     build:
       context: .
       dockerfile: Dockerfile
     environment:
       - PORT=5000
-      - MONGODB_URI=mongodb://host.docker.internal:27017
+      - MONGODB_URI=mongodb://mongoDB:27017
     ports:
       - "5000:5000"
     depends_on:
       - mongoDB
 
   mongoDB:
-    container_name: mongodb
     image: mongo:6.0
+    networks:
+      - test-task-network
     volumes:
       - ./data:/data/db
     ports:
