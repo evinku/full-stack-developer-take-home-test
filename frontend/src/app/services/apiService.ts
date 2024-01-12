@@ -16,7 +16,7 @@ export const apiService = {
 
   createItem: (newItem: Item): ApiResponse<Item> => axiosInstance.post('/items', newItem),
 
-  updateItem: (id: string, updatedItem: Item): ApiResponse<Item> => axiosInstance.put(`/items/${id}`, updatedItem),
+  updateItem: (tokenId: string, updatedItem: Item): ApiResponse<Item> => axiosInstance.put(`/items/${tokenId}`, updatedItem),
 
   deleteItem: (tokenId: string): ApiError => axiosInstance.delete(`/items/${tokenId}`),
 };
