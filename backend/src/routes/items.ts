@@ -14,7 +14,7 @@ router.post('/', async (req: Request, res: Response) => {
   }
 });
 
-router.get('/', async (req: Request, res: Response) => {
+router.get('/', async (_req: Request, res: Response) => {
   try {
     const items: IItem[] = await Item.find();
     res.json(items);
@@ -28,7 +28,7 @@ router.put('/:tokenId', async (req: Request, res: Response) => {
   try {
     const { tokenId } = req.params;
     const updatedItem: IItem = req.body;
-    const result = await Item.findOneAndUpdate({ tokenId: tokenId }, updatedItem, { new: true });
+    const result = await Item.findOneAndUpdate({ tokenId }, updatedItem, { new: true });
     if (!result) {
       return res.status(404).json({ message: 'Item not found' });
     }

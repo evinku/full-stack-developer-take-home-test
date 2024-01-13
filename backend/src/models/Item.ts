@@ -13,7 +13,7 @@ const itemSchema = new mongoose.Schema({
   description: { type: String, required: true },
   imageUrl: { type: String, required: true },
   owner: { type: String, required: true },
-  tokenId: { type: String, required: true }
+  tokenId: { type: String, required: true, unique: true }
 });
 
 export default mongoose.model<IItem>('Item', itemSchema);
