@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import EditModal from './EditModal';
 import { Item } from '../interfaces';
-import '../itemStyles.css';
 
 interface ItemProps {
     title: string;
@@ -18,18 +17,26 @@ const Item: React.FC<ItemProps> = ({ title, description, imageUrl, owner, tokenI
     const [showEditModal, setShowEditModal] = useState(false);
 
     return (
-        <div className="item-container">
-            <div className="relative">
-                <img src={imageUrl} alt={title} className="image-style" />
-                <div className="button-container">
-                    <button hidden={!(owner === currentAccount)} className="button-style" onClick={() => onDelete(tokenId)}>X</button>
-                    <button hidden={!(owner === currentAccount)} className="button-style edit" onClick={() => setShowEditModal(true)}>Edit</button>
-                </div>
+        <div className="relative mb-5 border border-gray-300 rounded shadow-md p-2">
+            <img src={imageUrl} alt={title} className="w-full rounded" />
+            <div className="absolute top-0 right-0">
+                <button hidden={!(owner === currentAccount)} className="text-white bg-red-500 hover:bg-red-700 p-1 rounded mr-1 mt-1" onClick={() => onDelete(tokenId)}>X</button>
+                <button hidden={!(owner === currentAccount)} className="text-white bg-blue-500 hover:bg-blue-700 p-1 rounded mr-1 mt-1" onClick={() => setShowEditModal(true)}>Edit</button>
             </div>
-            <p><b>Title:</b> {title}</p>
-            <p><b>Owner:</b> {owner}</p>
-            <p><b>Token ID:</b> {tokenId}</p>
-            <p><b>Description:</b> {description}</p>
+            <div className="mt-4 space-y-2 text-gray-800">
+                <p className="break-words font-semibold text-lg">
+                    <span className="text-gray-600">Title:</span> {title}
+                </p>
+                <p className="break-words font-medium">
+                    <span className="text-gray-600">Owner:</span> {owner}
+                </p>
+                <p className="break-words font-medium">
+                    <span className="text-gray-600">Token ID:</span> {tokenId}
+                </p>
+                <p className="break-words font-medium">
+                    <span className="text-gray-600">Description:</span> {description}
+                </p>
+            </div>
             {showEditModal && (
                 <EditModal
                     item={{ title, description, imageUrl, tokenId, owner }}

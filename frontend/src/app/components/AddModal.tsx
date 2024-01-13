@@ -8,7 +8,7 @@ interface ModalProps {
     currentAccount: string
 }
 
-const Modal: React.FC<ModalProps> = ({ onClose, onSubmit, mintedItems, currentAccount }) => {
+const AddModal: React.FC<ModalProps> = ({ onClose, onSubmit, mintedItems, currentAccount }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [tokenId, setTokenId] = useState('');
@@ -76,7 +76,9 @@ const Modal: React.FC<ModalProps> = ({ onClose, onSubmit, mintedItems, currentAc
                             alt={'Preview Image'}
                         /> : <div>Please enter a token ID between 0 - 1000 </div>}
                     </div>
-
+                    <div className="flex justify-center items-center mb-4">
+                    {mintedItems.includes(tokenId) && <div>This token ID is already taken</div>}
+                    </div>
                     <div className="flex justify-center items-center mb-4">
                         <button
                             disabled={mintedItems.includes(tokenId)}
@@ -96,4 +98,4 @@ const Modal: React.FC<ModalProps> = ({ onClose, onSubmit, mintedItems, currentAc
     );
 };
 
-export default Modal;
+export default AddModal;
