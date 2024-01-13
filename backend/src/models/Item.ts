@@ -5,7 +5,7 @@ export interface IItem extends Document {
   description: string;
   imageUrl: string;
   owner: string;
-  tokenId: number
+  tokenId: string
 }
 
 const itemSchema = new mongoose.Schema({
