@@ -64,6 +64,8 @@ The deployed mongoDB is currently set up via [MongoDB Atlas](https://www.mongodb
 
 The dockerized backend is deployed via [DigitalOcean](https://cloud.digitalocean.com)
 
+See also the deploy script in **scripts/deploy.sh** for an example to push the Dockerimage to the DigitalOcean Container Registry.
+
 ## API Routes
 
 The API provides the following endpoints:
