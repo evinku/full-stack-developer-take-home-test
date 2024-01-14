@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ItemComponent from '../components/Item';
 import AddModal from './AddModal';
-import { apiService } from '../services/apiService';
+import { itemApiService } from '../services/itemApiService';
 import { Item } from '../interfaces';
 import { useWeb3React } from '@web3-react/core';
 import MetaMaskBtn from '../components/MetaMaskBtn';
@@ -17,7 +17,7 @@ const Main: React.FC = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const res = await apiService.getItems();
+            const res = await itemApiService.getItems();
             setItems(res.data);
         }
 
@@ -27,8 +27,8 @@ const Main: React.FC = () => {
     const handleAddItem = async (newItem: Item) => {
         setIsLoading(true);
         try {
-            await apiService.createItem(newItem);
-            const res = await apiService.getItems();
+            await itemApiService.createItem(newItem);
+            const res = await itemApiService.getItems();
             setItems(res.data);
         } catch (error) {
             console.error('Error adding item:', error);
@@ -40,8 +40,8 @@ const Main: React.FC = () => {
     const handleDeleteItem = async (tokenId: string) => {
         setIsLoading(true);
         try {
-            await apiService.deleteItem(tokenId);
-            const res = await apiService.getItems();
+            await itemApiService.deleteItem(tokenId);
+            const res = await itemApiService.getItems();
             setItems(res.data);
         } catch (error) {
             console.error('Error deleting item:', error);
@@ -53,8 +53,8 @@ const Main: React.FC = () => {
     const handleEditItem = async (updatedItem: Item) => {
         setIsLoading(true);
         try {
-            await apiService.updateItem(updatedItem.tokenId, updatedItem);
-            const res = await apiService.getItems();
+            await itemApiService.updateItem(updatedItem.tokenId, updatedItem);
+            const res = await itemApiService.getItems();
             setItems(res.data);
         } catch (error) {
             console.error('Error updating item:', error);

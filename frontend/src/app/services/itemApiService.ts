@@ -1,7 +1,7 @@
 import axios, { AxiosResponse, AxiosError } from 'axios';
 import { Item } from '../interfaces';
 
-const axiosInstance = axios.create({
+export const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
   timeout: 5000,
 });
@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
 type ApiResponse<T> = Promise<AxiosResponse<T>>;
 type ApiError = Promise<AxiosError>;
 
-export const apiService = {
+export const itemApiService = {
   getItems: (): ApiResponse<Item[]> => axiosInstance.get('/items'),
 
   createItem: (newItem: Item): ApiResponse<Item> => axiosInstance.post('/items', newItem),
