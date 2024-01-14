@@ -44,21 +44,20 @@ You can build a Docker image from the Dockerfile and deploy it on any Docker-sup
 
 ```
 # Build the Docker image
-docker build -t your-app-name .
+docker build -t <app-name> .
 ```
 
 When starting the Docker image, provide the necessary environment variables:
 
 - MONGODB_URI: The URI for your MongoDB instance.
 - PORT: The port number on which the app will run (e.g. 5000).
-To run the Docker image:
 
 ```
 # Run the Docker container
-docker run -d -p 5000:5000 -e MONGODB_URI=your_mongodb_uri -e PORT=5000 your-app-name
+docker run -d -p 5000:5000 -e MONGODB_URI=<mongodb_uri> -e PORT=<port> <app-name>
 ```
 
-Replace your-app-name with the name you wish to give to your app, and your_mongodb_uri with your actual MongoDB URI.
+Replace **app-name** with the name you wish to give to your app. Also replace **mongodb_uri** with your actual MongoDB URI and **port** with your actual port number.
 
 The deployed mongoDB is currently set up via [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
 
