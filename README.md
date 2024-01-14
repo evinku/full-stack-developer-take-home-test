@@ -1,5 +1,7 @@
 # Tokenize Images Monorepo
 
+Link to [test assignment](https://docs.google.com/document/d/1L3H-N4eOeUPrRlsghFcRK-2WrlbNWcFHZFTBfhx1TJk/edit#heading=h.zf0icanurg2q) for reference.
+
 This application focuses on tokenizing images from [Picsum Photos](https://picsum.photos/). The range for tokenization is from 0-1000, where each image number represents a unique `tokenId`. These tokenIds are exclusive and can exist only once in the database.
 
 ## Features
