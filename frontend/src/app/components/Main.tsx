@@ -36,7 +36,7 @@ const Main: React.FC = () => {
             setIsLoading(false);
         }
     };
-    
+
     const handleDeleteItem = async (tokenId: string) => {
         setIsLoading(true);
         try {
@@ -49,7 +49,7 @@ const Main: React.FC = () => {
             setIsLoading(false);
         }
     };
-    
+
     const handleEditItem = async (updatedItem: Item) => {
         setIsLoading(true);
         try {
@@ -62,7 +62,7 @@ const Main: React.FC = () => {
             setIsLoading(false);
         }
     };
-    
+
 
     return (
         <div>
